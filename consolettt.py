@@ -46,6 +46,8 @@ def wonyet(ttt):
         elif (ttt[i][i]==ttt[i+1][i+1]==ttt[i+2][i+2]):
             win = 1
             return win  
+    
+    return win
 
 def game(ttt):
     dboard(ttt)
@@ -64,5 +66,5 @@ while(win!=1):
     p1play(ttt)
     p2play(ttt)
     game(ttt)
-    wonyet(ttt)
+    win = wonyet(ttt)
 
