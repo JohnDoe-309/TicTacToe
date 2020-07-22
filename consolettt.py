@@ -1,4 +1,3 @@
-import numpy as np
 import random as ra
 def create():
     ttt = [["-","-","-"],
@@ -7,31 +6,31 @@ def create():
     return ttt
 
 def dboard(ttt):
-    print(ttt[0]+"|"+ttt[1]+"|"+ttt[2])
-    print(ttt[3]+"|"+ttt[4]+"|"+ttt[5])
-    print(ttt[6]+"|"+ttt[7]+"|"+ttt[8])
+    print(ttt[0][0]+"|"+ttt[0][1]+"|"+ttt[0][2])
+    print(ttt[1][0]+"|"+ttt[1][1]+"|"+ttt[1][2])
+    print(ttt[2][0]+"|"+ttt[2][1]+"|"+ttt[2][2])
     return
 
 def p1play(ttt):
     l = list()
-    for i in range(2):
-        for j in range(2):
+    for i in range(3):
+        for j in range(3):
             if (ttt[i][j]=="-"):
-                l.append((i,j))
+                l.append([i,j])
     
     print(l)
-    x = input("Choose the indev of the location from the above options : ")
-    ttt[l[x]] = "X"
+    x = int(input("Choose the index of the location from the above options : "))
+    ttt[l[x][0]][l[x][1]] = "X"
 
 def p2play(ttt):
     l = list()
     for i in range(2):
         for j in range(2):
             if (ttt[i][j]=="-"):
-                l.append((i,j))
+                l.append([i,j])
     
-    ch = random.choice(l)
-    ttt[ch] = "O"
+    ch = ra.choice(l)
+    ttt[ch[0]][ch[1]] = "O"
 
 def wonyet(ttt):
     for i in range(2):
@@ -60,8 +59,10 @@ def game(ttt):
 nums1 = list(range(9))
 nums2 = list(range(9))
 win = 0
-# while(win!=1):
-x1 = int(input("Player1 : Enter a number between 1 and 9 :"))
-x2 = int(input("Player2 : Enter a number between 1 and 9 :"))
-
+ttt = create()
+while(win!=1):
+    p1play(ttt)
+    p2play(ttt)
+    game(ttt)
+    wonyet(ttt)
 
